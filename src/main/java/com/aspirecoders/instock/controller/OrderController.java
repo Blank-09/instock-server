@@ -41,12 +41,12 @@ public class OrderController {
         return new ResponseEntity<>(inv, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @PutMapping("/category/{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity<Order> putMethodName(@PathVariable int id, @RequestBody Order entity) {
         return new ResponseEntity<>(orderService.editOrder(id, entity), HttpStatus.OK);
     }
 
-    @DeleteMapping("/category/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteMethod(@PathVariable long id) {
         if (orderService.deleteById(id)) {
             return ResponseEntity.ok().body("Successfully deleted");

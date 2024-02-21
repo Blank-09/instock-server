@@ -42,12 +42,12 @@ public class InventoryController {
         return new ResponseEntity<>(inv, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @PutMapping("/category/{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity<Inventory> putMethodName(@PathVariable int id, @RequestBody Inventory entity) {
         return new ResponseEntity<>(inventoryService.editInventory(id, entity), HttpStatus.OK);
     }
 
-    @DeleteMapping("/category/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteMethod(@PathVariable int id) {
         if (inventoryService.deleteById(id)) {
             return ResponseEntity.ok().body("Successfully deleted");
