@@ -9,10 +9,13 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "Brand")
+@Table(name = "Brands")
 public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long brandId;
     private String brandName;
+    private String brandDescription;
+    private String brandCountry;
+    private String brandLogo;
 }
