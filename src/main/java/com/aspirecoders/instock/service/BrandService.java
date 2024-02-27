@@ -4,6 +4,7 @@ import com.aspirecoders.instock.model.Brand;
 import com.aspirecoders.instock.repository.BrandRepo;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,8 @@ public class BrandService {
         return brandRepo.save(brand);
     }
 
-    public Brand getBrandById(long brandId) {
-        return brandRepo.findById(brandId).orElse(null);
+    public Optional<Brand> getBrandById(long brandId) {
+        return brandRepo.findById(brandId);
     }
 
     public List<Brand> getAllBrands() {

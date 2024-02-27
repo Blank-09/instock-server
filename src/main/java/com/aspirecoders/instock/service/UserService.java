@@ -3,6 +3,8 @@ package com.aspirecoders.instock.service;
 import com.aspirecoders.instock.model.User;
 import com.aspirecoders.instock.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -41,6 +43,34 @@ public class UserService {
 
   public void deleteUser(String id) {
     userRepo.deleteById(id);
+  }
+
+  public ResponseEntity<User> login(String email, String password) {
+    Optional<User> user = userRepo.findByEmail(email);
+
+    if (user.isPresent()) {
+      User foundUser = user.get();
+      boolean isEqual = foundUser.getPassword().equals(password);
+
+      if (isEqual) {
+        return ResponseEntity.ok(foundUser);
+      } else {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+      }
+    }
+
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+  }
+
+  public ResponseEntity<User> register(User user) {
+    Optional<User> existingUser = userRepo.findByEmail(user.getEmail());
+
+    if (existingUser.isPresent()) {
+      return ResponseEntity.status(HttpStatus.CONFLICT).build();
+    }
+
+    User newUser = userRepo.save(user);
+    return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
   }
 
 }
