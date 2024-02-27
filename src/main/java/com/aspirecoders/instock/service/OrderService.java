@@ -45,8 +45,6 @@ public class OrderService {
         old.setCustomerId(inv.getCustomerId());
         old.setDeliveryStatus(inv.getDeliveryStatus());
         old.setOrderId(inv.getOrderId());
-        old.setProductId(inv.getProductId());
-        old.setQuantity(inv.getQuantity());
         old.setStatus(inv.getStatus());
         old.setTotalAmount(inv.getTotalAmount());
         orderRepo.saveAndFlush(old);
