@@ -10,7 +10,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 import com.aspirecoders.instock.enums.DeliveryStatus;
@@ -21,17 +20,10 @@ import com.aspirecoders.instock.enums.OrderStatus;
 @Table(name = "Orders")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long orderId;
-
-    @Column(name = "cust_id")
     private Long customerId;
-
-    @Column(name = "prod_id")
-    private Long productId;
-
-    private BigDecimal totalAmount;
-    private Integer quantity;
+    private Double totalAmount;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;

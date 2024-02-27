@@ -2,7 +2,6 @@ package com.aspirecoders.instock.model;
 
 import java.util.Date;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,12 +14,9 @@ import lombok.Data;
 @Table(name = "Customers")
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "cust_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int customerId;
-
-    @Column(name = "cust_name")
     private String customerName;
     private String mobile;
-    private Date created;
+    private Date createdAt;
 }
