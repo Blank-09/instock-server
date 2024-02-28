@@ -42,7 +42,7 @@ public class ProductController {
     }
 
     @GetMapping("/user/getproductbyid/{product_id}")
-    public ResponseEntity<Product> getMethodName(@PathVariable long product_id) {
+    public ResponseEntity<Product> getMethodName(@PathVariable int product_id) {
         Optional<Product> product = productService.getProductById(product_id);
         if (product.isPresent()) {
             return new ResponseEntity<>(product.get(), HttpStatus.OK);
@@ -51,7 +51,7 @@ public class ProductController {
     }
 
     @PutMapping("/user/put/{id}")
-    public ResponseEntity<Product> putMethodName(@PathVariable long id, @RequestBody Product entity) {
+    public ResponseEntity<Product> putMethodName(@PathVariable int id, @RequestBody Product entity) {
         if (productService.putByProductId(id, entity)) {
             return new ResponseEntity<>(entity, HttpStatus.OK);
         }

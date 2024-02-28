@@ -28,21 +28,17 @@ public class ProductService {
         return productRepo.findAll();
     }
 
-    public Optional<Product> getProductById(long product_id) {
+    public Optional<Product> getProductById(int product_id) {
         return productRepo.findById(product_id);
     }
 
-    public boolean putByProductId(long id, Product product) {
+    public boolean putByProductId(int id, Product product) {
         Product pro = productRepo.findById(id).orElse(null);
 
         if (pro == null) {
             return false;
         } else {
             try {
-                // pro.setProductId(product.getProductId());
-                pro.setBrandId(product.getBrandId());
-                pro.setProductName(product.getProductName());
-                pro.setCreatedAt(product.getCreatedAt());
                 productRepo.saveAndFlush(pro);
                 return true;
             } catch (Exception e) {
@@ -51,7 +47,7 @@ public class ProductService {
         }
     }
 
-    public boolean deleteById(long id) {
+    public boolean deleteById(int id) {
         Product p = productRepo.findById(id).orElse(null);
 
         if (p == null) {
