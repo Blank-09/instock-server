@@ -13,6 +13,7 @@ public class OrderDetails {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int orderDetailsId;
+
   private int orderId;
   private int productId;
   private int quantity;
