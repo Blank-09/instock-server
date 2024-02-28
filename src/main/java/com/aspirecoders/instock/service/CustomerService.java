@@ -19,7 +19,7 @@ public class CustomerService {
         return customerRepo.save(customer);
     }
 
-    public Customer getCustomerById(int id) {
+    public Customer getCustomerById(String id) {
         return customerRepo.findById(id).orElse(null);
     }
 
@@ -27,7 +27,7 @@ public class CustomerService {
         return customerRepo.findAll();
     }
 
-    public Customer updateCustomer(int id, Customer customer) {
+    public Customer updateCustomer(String id, Customer customer) {
         Optional<Customer> existingCustomer = customerRepo.findById(id);
 
         if (existingCustomer.isEmpty()) {
@@ -40,7 +40,7 @@ public class CustomerService {
         return customerRepo.save(cust);
     }
 
-    public void deleteCustomer(int id) {
+    public void deleteCustomer(String id) {
         customerRepo.deleteById(id);
     }
 

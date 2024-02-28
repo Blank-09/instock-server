@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.aspirecoders.instock.model.Inventory;
 
 @Repository
-public interface InventoryRepo extends JpaRepository<Inventory, Integer> {
+public interface InventoryRepo extends JpaRepository<Inventory, Long> {
     // You can add custom query methods here if needed
 }
