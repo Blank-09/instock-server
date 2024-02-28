@@ -13,6 +13,7 @@ import jakarta.persistence.PrePersist;
 @Entity
 @Data
 public class Admin {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String adminId;
