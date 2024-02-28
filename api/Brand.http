@@ -11,10 +11,10 @@ POST {{ host }}/api/brands
 Content-Type: application/json
 
 {
-  "brandName": "AspireCoders",
-  "brandDescription": "Software and Freelancing",
-  "brandCountry": "India",
-  "brandLogo": "http://teamaspirecoders.pages.dev"
+  "brandName": "Nike",
+  "brandDescription": "Sportswear and equipment",
+  "brandCountry": "United States",
+  "brandLogo": "https://example.com/nike-logo.png"
 }
 
 ### Update brand by ID

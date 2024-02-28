@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aspirecoders.instock.enums.OrderStatus;
 import com.aspirecoders.instock.model.Order;
 import com.aspirecoders.instock.repository.OrderRepo;
 
@@ -41,14 +42,9 @@ public class OrderService {
 
     public Order editOrder(long id, Order inv) {
         Order old = orderRepo.findById(id).orElse(null);
-        old.setCreatedAt(inv.getCreatedAt());
-        old.setCustomerId(inv.getCustomerId());
-        old.setDeliveryStatus(inv.getDeliveryStatus());
-        old.setOrderId(inv.getOrderId());
-        old.setStatus(inv.getStatus());
-        old.setTotalAmount(inv.getTotalAmount());
-        orderRepo.saveAndFlush(old);
-        return old;
+        if (old != null)
+            orderRepo.saveAndFlush(old);
+        return null;
     }
 
     public boolean deleteById(long id) {
@@ -58,5 +54,9 @@ public class OrderService {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public int getCount(OrderStatus orderStatus) {
+        return orderRepo.getCountOfStatus(orderStatus);
     }
 }

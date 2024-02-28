@@ -11,6 +11,7 @@ import lombok.Data;
 @Entity
 @Data
 public class Admin {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int adminId;
