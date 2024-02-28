@@ -5,11 +5,11 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.aspirecoders.instock.model.User;
+import com.aspirecoders.instock.model.Admin;
 
 @Repository
-public interface UserRepo extends JpaRepository<User, String> {
+public interface AdminRepo extends JpaRepository<Admin, String> {
 
-  Optional<User> findByEmail(String email);
+    Optional<Admin> findByEmail(String email);
 
 }

@@ -28,11 +28,11 @@ public class ProductService {
         return productRepo.findAll();
     }
 
-    public Optional<Product> getProductById(int product_id) {
+    public Optional<Product> getProductById(long product_id) {
         return productRepo.findById(product_id);
     }
 
-    public boolean putByProductId(int id, Product product) {
+    public boolean putByProductId(long id, Product product) {
         Product pro = productRepo.findById(id).orElse(null);
 
         if (pro == null) {
@@ -47,7 +47,7 @@ public class ProductService {
         }
     }
 
-    public boolean deleteById(int id) {
+    public boolean deleteById(long id) {
         Product p = productRepo.findById(id).orElse(null);
 
         if (p == null) {

@@ -5,42 +5,44 @@ import java.util.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-import jakarta.transaction.Transactional;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Data
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Transactional
-@Table(name = "Products")
 public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int product_id;
+    private long productId;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int brand_id;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonBackReference
+    private Brand brand;
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int category_id;
-
-    private String product_name;
-
+    private String productName;
+    private byte[] image;
     private String description;
+    private double price;
 
-    private int price;
+    @Column(columnDefinition = "TIMESTAMP")
+    private Date createdAt;
 
-    private Date created_at;
+    @PrePersist
+    protected void onCreate() {
+        createdAt = new Date();
+    }
 
+    // Map
     @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
     @JsonManagedReference
     private Inventory inventory;

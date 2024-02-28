@@ -31,7 +31,7 @@ public class InventoryService {
     }
 
     @SuppressWarnings("static-access")
-    public Inventory getById(int id) {
+    public Inventory getById(long id) {
         Optional<Inventory> invOptional = inventoryRepo.findById(id);
         if (invOptional.empty() == null) {
             return null;
@@ -39,13 +39,14 @@ public class InventoryService {
         return invOptional.get();
     }
 
-    public Inventory editInventory(int id, Inventory inv) {
+    public Inventory editInventory(long id, Inventory inv) {
         Inventory old = inventoryRepo.findById(id).orElse(null);
-        inventoryRepo.saveAndFlush(old);
+        if (old != null)
+            return inventoryRepo.saveAndFlush(old);
         return old;
     }
 
-    public boolean deleteById(int id) {
+    public boolean deleteById(long id) {
         try {
             inventoryRepo.deleteById(id);
             return true;
