@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.aspirecoders.instock.model.Admin;
 import com.aspirecoders.instock.service.AdminService;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:5173")

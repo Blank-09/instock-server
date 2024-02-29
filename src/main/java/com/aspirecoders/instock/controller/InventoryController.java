@@ -30,7 +30,7 @@ public class InventoryController {
     }
 
     @GetMapping("/{id}")
-    public Inventory get(@PathVariable int id) {
+    public Inventory get(@PathVariable long id) {
         return inventoryService.getById(id);
     }
 
@@ -53,5 +53,21 @@ public class InventoryController {
             return ResponseEntity.ok().body("Successfully deleted");
         }
         return ResponseEntity.internalServerError().body("Deletion aborted");
+    }
+
+    @GetMapping("/page/{offset}/{size}")
+    public List<Inventory> getPage(@PathVariable("offset") int offset, @PathVariable("size") int size) {
+        return inventoryService.getPageList(offset, size);
+    }
+
+    @GetMapping("/sort/{field}/{sortBy}")
+    public List<Inventory> sortPage(@PathVariable("field") String field, @PathVariable("sortBy") String sortBy) {
+        return inventoryService.sortPageList(field, sortBy);
+    }
+
+    @GetMapping("/page/{offset}/{size}/{field}/{sortBy}")
+    public List<Inventory> sortPaginate(@PathVariable("offset") int offset, @PathVariable("size") int size,
+            @PathVariable("field") String field, @PathVariable("sortBy") String sortBy) {
+        return inventoryService.sortAndPaginate(offset, size, sortBy, field);
     }
 }

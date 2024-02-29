@@ -31,10 +31,10 @@ public class Product {
     @JoinColumn(name = "brand_id")
     private Brand brand;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JsonManagedReference
-    @JoinColumn(name = "category_id")
-    private Category category;
+    // @ManyToOne(cascade = CascadeType.ALL)
+    // @JsonBackReference
+    // @JoinColumn(name = "category_id")
+    // private Category category;
 
     private String productName;
     private byte[] image;
@@ -53,4 +53,5 @@ public class Product {
     @OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
     @JsonManagedReference
     private Inventory inventory;
+
 }

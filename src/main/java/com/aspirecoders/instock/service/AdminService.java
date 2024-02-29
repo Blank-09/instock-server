@@ -74,4 +74,5 @@ public class AdminService {
         Admin newAdmin = adminRepo.save(admin);
         return ResponseEntity.status(HttpStatus.CREATED).body(newAdmin);
     }
+
 }

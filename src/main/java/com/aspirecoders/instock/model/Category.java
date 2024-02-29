@@ -2,6 +2,8 @@ package com.aspirecoders.instock.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,6 +20,8 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long categoryId;
     private String categoryName;
+
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    List<Product> Product;
+    @JsonManagedReference
+    List<Brand> brand;
 }
