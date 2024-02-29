@@ -39,10 +39,6 @@ public class ProductService {
             return false;
         } else {
             try {
-                // pro.setProductId(product.getProductId());
-                pro.setBrandId(product.getBrandId());
-                pro.setProductName(product.getProductName());
-                pro.setCreatedAt(product.getCreatedAt());
                 productRepo.saveAndFlush(pro);
                 return true;
             } catch (Exception e) {

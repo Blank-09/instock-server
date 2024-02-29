@@ -29,11 +29,11 @@ public class CategoryService {
     }
 
     public Optional<Category> getProductById(long category_id) {
-        return categoryRepo.findById((int) category_id);
+        return categoryRepo.findById(category_id);
     }
 
     public boolean putByProductId(long id, Category category) {
-        Category pro = categoryRepo.findById((int) id).orElse(null);
+        Category pro = categoryRepo.findById(id).orElse(null);
 
         if (pro == null) {
             return false;
@@ -50,13 +50,13 @@ public class CategoryService {
     }
 
     public boolean deleteById(long id) {
-        Category p = categoryRepo.findById((int) id).orElse(null);
+        Category p = categoryRepo.findById(id).orElse(null);
 
         if (p == null) {
             return false;
         } else {
             try {
-                categoryRepo.deleteById((int) id);
+                categoryRepo.deleteById(id);
                 return true;
             } catch (Exception e) {
                 return false;
