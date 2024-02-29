@@ -5,11 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-<<<<<<< HEAD
-// import org.springframework.web.bind.annotation.CrossOrigin;
-=======
 import org.springframework.web.bind.annotation.CrossOrigin;
->>>>>>> 0a3ff260198b430d0df515ac66d7b63ad93429aa
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,11 +20,7 @@ import com.aspirecoders.instock.model.Order;
 import com.aspirecoders.instock.service.OrderService;
 
 @RestController
-<<<<<<< HEAD
-// @CrossOrigin(origins = "http://localhost:5173/")
-=======
 @CrossOrigin(origins = "http://localhost:5173")
->>>>>>> 0a3ff260198b430d0df515ac66d7b63ad93429aa
 @RequestMapping("/api/order")
 public class OrderController {
     @Autowired
